@@ -472,7 +472,7 @@ async def scrape_and_send(event, user_id, entity, start_msg_id, count):
                     )
                 )
                 await status.edit(f"✅ Done `{m.id}`\n<b>Bot created by:</b> {BOT_CREATOR}", parse_mode="html")
-                try:
+               try:
                     os.remove(filename)
                 except Exception:
                     pass
@@ -494,9 +494,12 @@ async def scrape_and_send(event, user_id, entity, start_msg_id, count):
 # ----------------- start -----------------
 async def main():
     print("Starting user session. You will be asked for phone & OTP once (session saved).")
-    await client.start()  # interactive login first time
+    await client.start()
+    me = await client.get_me()   # ✅ inside the async function now
+    print(f"✅ Logged in as: {me.username or me.first_name} ({me.id})")
     print("Logged in. User session active.")
     await client.run_until_disconnected()
+
 me = await client.get_me()
 print(f"✅ Logged in as: {me.username or me.first_name} ({me.id})")
 
