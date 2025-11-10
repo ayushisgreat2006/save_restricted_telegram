@@ -506,8 +506,7 @@ async def main():
 if __name__ == "__main__":
     import asyncio
     try:
-    asyncio.run(main())
+        asyncio.run(main())
     except KeyboardInterrupt:
-    print("Exiting...")
+        print("Exiting...")
 # ----------------- end main -----------------
-
