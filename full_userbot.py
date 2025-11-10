@@ -36,6 +36,16 @@ USAGE_LIMIT_NON_ADMIN = int(os.environ.get("USAGE_LIMIT_NON_ADMIN", "10"))
 
 os.makedirs(DOWNLOAD_DIR, exist_ok=True)
 
+
+
+from telethon.sessions import StringSession
+
+TG_STRING_SESSION = os.environ.get("TG_STRING_SESSION", "").strip()
+
+if TG_STRING_SESSION:
+    client = TelegramClient(StringSession(TG_STRING_SESSION), API_ID, API_HASH)
+else:
+    client = TelegramClient(SESSION, API_ID, API_HASH)
 # ----------------- CLIENT -----------------
 client = TelegramClient(SESSION, API_ID, API_HASH)
 
