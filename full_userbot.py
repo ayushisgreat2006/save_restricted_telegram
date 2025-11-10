@@ -493,6 +493,7 @@ async def scrape_and_send(event, user_id, entity, start_msg_id, count):
 
 
 # ----------------- start main -----------------
+# ----------------- start main -----------------
 async def main():
     print("Starting user session. You will be asked for phone & OTP once (session saved).")
     await client.start()
@@ -505,7 +506,8 @@ async def main():
 if __name__ == "__main__":
     import asyncio
     try:
-        asyncio.run(main())
+    asyncio.run(main())
     except KeyboardInterrupt:
-        print("Exiting...")
+    print("Exiting...")
 # ----------------- end main -----------------
+
