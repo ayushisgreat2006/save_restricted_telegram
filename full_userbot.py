@@ -471,7 +471,7 @@ async def scrape_and_send(event, user_id, entity, start_msg_id, count):
                         progress_bar(uploaded, total or 0, status, "📤 Uploading", start_time)
                     )
                 )
-                                await status.edit(f"✅ Done `{m.id}`\n<b>Bot created by:</b> {BOT_CREATOR}", parse_mode="html")
+                await status.edit(f"✅ Done `{m.id}`\n<b>Bot created by:</b> {BOT_CREATOR}", parse_mode="html")
                 try:
                     os.remove(filename)
                 except Exception:
@@ -484,10 +484,18 @@ async def scrape_and_send(event, user_id, entity, start_msg_id, count):
             await asyncio.sleep(0.7)
         except BadRequestError as bre:
             failed += 1
-            await client.send_message(user_id, f"Failed to process message {m.id}: {bre}\n<b>Bot created by:</b> {BOT_CREATOR}", parse_mode="html")
+            await client.send_message(
+                user_id,
+                f"Failed to process message {m.id}: {bre}\n<b>Bot created by:</b> {BOT_CREATOR}",
+                parse_mode="html"
+            )
         except Exception as e:
             failed += 1
-            await client.send_message(user_id, f"Error with message {m.id}: {e}\n<b>Bot created by:</b> {BOT_CREATOR}", parse_mode="html")
+            await client.send_message(
+                user_id,
+                f"Error with message {m.id}: {e}\n<b>Bot created by:</b> {BOT_CREATOR}",
+                parse_mode="html"
+            )
 
     await client.send_message(
         user_id,
