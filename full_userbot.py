@@ -471,8 +471,8 @@ async def scrape_and_send(event, user_id, entity, start_msg_id, count):
                         progress_bar(uploaded, total or 0, status, "📤 Uploading", start_time)
                     )
                 )
-                await status.edit(f"✅ Done `{m.id}`\n<b>Bot created by:</b> {BOT_CREATOR}", parse_mode="html")
-               try:
+                                await status.edit(f"✅ Done `{m.id}`\n<b>Bot created by:</b> {BOT_CREATOR}", parse_mode="html")
+                try:
                     os.remove(filename)
                 except Exception:
                     pass
@@ -489,11 +489,14 @@ async def scrape_and_send(event, user_id, entity, start_msg_id, count):
             failed += 1
             await client.send_message(user_id, f"Error with message {m.id}: {e}\n<b>Bot created by:</b> {BOT_CREATOR}", parse_mode="html")
 
-    await client.send_message(user_id, f"✅ Finished. Sent: {sent}. Failed: {failed}.\n<b>Bot created by:</b> {BOT_CREATOR}", parse_mode="html")
+    await client.send_message(
+        user_id,
+        f"✅ Finished. Sent: {sent}. Failed: {failed}.\n<b>Bot created by:</b> {BOT_CREATOR}",
+        parse_mode="html"
+    )
 
 
-# ----------------- start main -----------------
-# ----------------- start main -----------------
+# ----------------- main entrypoint -----------------
 async def main():
     print("Starting user session. You will be asked for phone & OTP once (session saved).")
     await client.start()
