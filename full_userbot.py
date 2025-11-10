@@ -46,17 +46,7 @@ if TG_STRING_SESSION:
     client = TelegramClient(StringSession(TG_STRING_SESSION), API_ID, API_HASH)
 else:
     client = TelegramClient(SESSION, API_ID, API_HASH)
-# ----------------- CLIENT -----------------
-client = TelegramClient(SESSION, API_ID, API_HASH)
 
-# pending requests map: {user_id: {"entity": entity_repr, "msg_id": int}}
-PENDING = {}
-
-# regex for t.me links:
-link_re = re.compile(
-    r'(?:https?://)?t\.me/(?P<kind>c/|\+)?(?P<chat>[\w\d_-]+|\d+)/(?P<msg_id>\d+)',
-    re.IGNORECASE
-)
 
 # ----------------- data persistence -----------------
 def _init_data():
