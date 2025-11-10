@@ -47,6 +47,8 @@ if TG_STRING_SESSION:
 else:
     client = TelegramClient(SESSION, API_ID, API_HASH)
 
+# pending requests dict for ongoing .scrap sessions
+PENDING = {}
 
 # ----------------- data persistence -----------------
 def _init_data():
