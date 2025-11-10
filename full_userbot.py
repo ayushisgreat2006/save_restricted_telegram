@@ -138,7 +138,11 @@ def list_whitelist_text():
     if not wl:
         return "Whitelist is empty."
     return "\n".join(f"- {format_id_name(w)}" for w in wl)
-
+# regex for Telegram message links
+link_re = re.compile(
+    r'(?:https?://)?t\.me/(?P<kind>c/|\+)?(?P<chat>[\w\d_-]+|\d+)/(?P<msg_id>\d+)',
+    re.IGNORECASE
+)
 # ----------------- parse link -----------------
 def parse_tme_link(text: str):
     m = link_re.search(text)
