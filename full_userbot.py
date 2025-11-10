@@ -497,6 +497,8 @@ async def main():
     await client.start()  # interactive login first time
     print("Logged in. User session active.")
     await client.run_until_disconnected()
+me = await client.get_me()
+print(f"✅ Logged in as: {me.username or me.first_name} ({me.id})")
 
 if __name__ == "__main__":
     try:
